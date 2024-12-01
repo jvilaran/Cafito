@@ -1,0 +1,82 @@
+/* Contenedor del formulario */
+.form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+  font-family: "Open-sans", cursive;
+}
+
+/* Título del formulario */
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #ff9800; /* Color de acento */
+}
+
+/* Grupo de campos del formulario */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Etiquetas */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: white; /* Color secundario */
+}
+
+/* Inputs y textarea */
+.form-group input,
+.form-group textarea {
+  width: 90%;
+  padding: 10px;
+  background-color: #3a3a3a;
+  border: 1px solid #ff9800;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #b0b8ba; /* Gris claro */
+  font-family: "Open-sans", cursive;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff7a59; /* Color de acento */
+}
+
+/* Botón de envío */
+.submit-button {
+  width: 95%;
+  padding: 10px 20px;
+  background-color: #ff7a59; /* Color de acento */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Open-sans", cursive;
+}
+
+.submit-button:hover {
+  background-color: #e65a43;
+}
+
+.submit-button:active {
+  background-color: #d14a36;
+}
