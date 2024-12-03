@@ -101,7 +101,7 @@ tbody td {
 
 /* Ajuste de ancho de columnas */
 td:nth-child(1) {
-  width: 40%; /* Nombre */
+  width: 20%; /* Nombre */
 }
 
 td:nth-child(2),

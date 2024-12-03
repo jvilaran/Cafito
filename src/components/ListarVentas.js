@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./ListarVentas.css"
 
 const ListarVentas = () => {
   const [ventas, setVentas] = useState([]);
@@ -9,8 +10,8 @@ const ListarVentas = () => {
   const obtenerVentas = async () => {
     const url =
       fechaInicio && fechaFin
-        ? `http://localhost:8000/api/ventas/filtrar/?inicio=${fechaInicio}&fin=${fechaFin}`
-        : "http://localhost:8000/api/ventas/listar/";
+        ? `http://localhost:8000/ventas/filtrar/?inicio=${fechaInicio}&fin=${fechaFin}`
+        : "http://localhost:8000/ventas/listar/";
 
     const response = await axios.get(url);
     setVentas(response.data);
@@ -22,24 +23,26 @@ const ListarVentas = () => {
 
   return (
     <div>
-      <h2>Ventas</h2>
-      <label>
-        Fecha Inicio:
-        <input
-          type="date"
-          value={fechaInicio}
-          onChange={(e) => setFechaInicio(e.target.value)}
-        />
-      </label>
-      <label>
-        Fecha Fin:
-        <input
-          type="date"
-          value={fechaFin}
-          onChange={(e) => setFechaFin(e.target.value)}
-        />
-      </label>
-      <button onClick={obtenerVentas}>Filtrar</button>
+      <h1>Ventas</h1>
+      <div className="filtro-fechas">
+        <label>
+          Fecha Inicio:
+          <input
+            type="date"
+            value={fechaInicio}
+            onChange={(e) => setFechaInicio(e.target.value)}
+          />
+        </label>
+        <label>
+          Fecha Fin:
+          <input
+            type="date"
+            value={fechaFin}
+            onChange={(e) => setFechaFin(e.target.value)}
+          />
+        </label>
+        <button onClick={obtenerVentas}>Filtrar</button>
+      </div>
 
       <table>
         <thead>
@@ -47,20 +50,18 @@ const ListarVentas = () => {
             <th>Factura</th>
             <th>Producto</th>
             <th>Cantidad</th>
-            <th>Total</th>
             <th>Propina</th>
-            <th>Total con Propina</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
           {ventas.map((venta) => (
             <tr key={venta.numero_factura}>
               <td>{venta.numero_factura}</td>
-              <td>{venta.producto}</td>
+              <td>{venta.nombre_producto}</td>
               <td>{venta.cantidad}</td>
-              <td>${venta.total}</td>
               <td>${venta.propina || 0}</td>
-              <td>${venta.total_con_propina}</td>
+              <td>${venta.total}</td>
             </tr>
           ))}
         </tbody>

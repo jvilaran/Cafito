@@ -38,7 +38,17 @@
 /* Inputs y textarea */
 .form-group input,
 .form-group textarea {
-  width: 90%;
+  width: 80%;
+  padding: 10px;
+  background-color: #3a3a3a;
+  border: 1px solid #ff9800;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+}
+
+.form-group select {
+  width: 84.5%;
   padding: 10px;
   background-color: #3a3a3a;
   border: 1px solid #ff9800;
@@ -48,12 +58,14 @@
 }
 
 .form-group input::placeholder,
+.form-group select,
 .form-group textarea::placeholder {
   color: #b0b8ba; /* Gris claro */
   font-family: "Open-sans", cursive;
 }
 
 .form-group input:focus,
+.form-group select,
 .form-group textarea:focus {
   outline: none;
   border-color: #ff7a59; /* Color de acento */
@@ -61,7 +73,7 @@
 
 /* Botón de envío */
 .submit-button {
-  width: 95%;
+  width: 85%;
   padding: 10px 20px;
   background-color: #ff7a59; /* Color de acento */
   color: white;
