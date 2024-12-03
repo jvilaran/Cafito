@@ -1,34 +1,53 @@
-# views.py
-from rest_framework import serializers, views, status, viewsets
+from rest_framework import views, status, viewsets
 from .models import Producto, Venta
-from .serializers import ProductoSerializer
+from .serializers import ProductoSerializer, VentaSerializer
 from rest_framework.response import Response
+from decimal import Decimal
 
-# Serializer para las ventas
-class VentaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Venta
-        fields = '__all__'
-
-# Vista para crear una venta
 class CrearVentaView(views.APIView):
     def post(self, request):
-        serializer = VentaSerializer(data=request.data)
+        print("Datos recibidos", request.data)
+        # Obtener el producto relacionado con el ID recibido en el request
+        producto_id = request.data.get("producto")
+        try:
+            producto = Producto.objects.get(id=producto_id)
+            print("Producto encontrado", producto)
+        except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Verificar que el producto tiene un precio asignado
+        if producto.precio is None:
+            return Response({"error": "El producto no tiene un precio válido"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Obtener la cantidad del producto
+        cantidad = int(request.data.get("cantidad", 1))
+
+        # Calcular el total sin propina
+        precio = producto.precio or 0  # Si el precio es None, se usa 0
+        total = precio * cantidad
+        
+        # Procesar la propina si se envía
+        propina = Decimal(request.data.get("propina", 0))
+        total_con_propina = total + propina
+        
+        if "total_con_propina" in request.data:
+            total_con_propina = Decimal(request.data["total_con_propina"])
+
+        # Crear el diccionario con los datos de la venta
+        venta_data = {
+            "producto": producto.id,
+            "cantidad": cantidad,
+            "precio": precio,
+            "total": total_con_propina,
+            "propina": propina,
+        }
+        
+        # Serializar la venta
+        serializer = VentaSerializer(data=venta_data)
         if serializer.is_valid():
-            precio = request.data["precio"]
-            cantidad = request.data["cantidad"]
-            propina = request.data.get("propina", 0)
-            total = precio * cantidad
-            total_con_propina = total + propina
-
-            # Crear la venta
-            venta = serializer.save(total=total, total_con_propina=total_con_propina)
-            
-            return Response(venta, status=status.HTTP_201_CREATED)
+            venta = serializer.save()
+            return Response({"numero_factura": venta.numero_factura}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def get(self, request):
-        return Response({"message": "Endpoint para registrar ventas. Use POST para crear una nueva venta."})
 
 
 # Vista para ver todas las ventas

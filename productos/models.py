@@ -14,18 +14,17 @@ class Venta(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
-    precio = models.DecimalField(max_digits=6, decimal_places=2)
-    total = models.DecimalField(max_digits=8, decimal_places=2)
-    propina = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-    total_con_propina = models.DecimalField(max_digits=8, decimal_places=2)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    propina = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
 
     def save(self, *args, **kwargs):
-        self.total = self.cantidad * self.precio
-        self.total_con_propina = self.total + (self.propina if self.propina else 0)
         
-        if not self.numero_factura:  # Si no tiene número de factura, asignamos el siguiente
+        # Generar un número de factura único
+        if not self.numero_factura:
             ultimo_numero = Venta.objects.aggregate(models.Max('numero_factura'))['numero_factura__max'] or 0
             self.numero_factura = ultimo_numero + 1
+
         super().save(*args, **kwargs)
 
     def __str__(self):
