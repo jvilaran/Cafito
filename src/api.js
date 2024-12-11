@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/", // Ajusta la URL según tu configuración
+  baseURL: "https://cafito.onrender.com", // Ajusta la URL según tu configuración
 });
 
 export default api;

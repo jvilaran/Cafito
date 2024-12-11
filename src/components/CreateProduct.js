@@ -28,7 +28,7 @@ const CrearProducto = () => {
 
     // Enviar datos al backend
     axios
-      .post("http://127.0.0.1:8000/api/productos/", productoData, {
+      .post("https://cafito.onrender.com/api/productos/", productoData, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -18,7 +18,7 @@ const Home = ({ user, logout }) => {
 
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/usuario/actual/", {
+        const response = await fetch("https://cafito.onrender.com/usuario/actual/", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ const Home = ({ user, logout }) => {
   }
 
   return (
-    <div>
+    <div className="home_background">
       <h1>Bienvenid@, {userData.username}!</h1>
       <div>
         <div>

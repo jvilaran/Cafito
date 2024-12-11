@@ -12,8 +12,8 @@ const ListarVentas = () => {
   const obtenerVentas = async () => {
     const url =
       fechaInicio && fechaFin
-        ? `http://localhost:8000/ventas/filtrar/?inicio=${fechaInicio}&fin=${fechaFin}`
-        : "http://localhost:8000/ventas/listar/";
+        ? `https://cafito.onrender.com/filtrar/?inicio=${fechaInicio}&fin=${fechaFin}`
+        : "https://cafito.onrender.com/ventas/listar/";
 
     const response = await axios.get(url);
     setVentas(response.data);
@@ -21,7 +21,7 @@ const ListarVentas = () => {
 
   const verDetalles = async (numeroFactura) => {
     const response = await axios.get(
-      `http://localhost:8000/ventas/${numeroFactura}/`
+      `https://cafito.onrender.com/ventas/${numeroFactura}/`
     );
     setVentaSeleccionada(response.data);
   };

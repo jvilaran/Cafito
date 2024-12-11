@@ -25,6 +25,7 @@
 .form-group label {
   color: #ebe3d7;
   text-align: center;
+  margin-top: 10px;
 }
 
 .form-group input,
@@ -63,5 +64,41 @@
 }
 
 .submit-button:hover {
+  background-color: #c29f6c;
+}
+
+.add-button {
+  background-color: #ac854c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 80%;
+}
+
+.add-button:hover {
+  background-color: #c29f6c;
+}
+
+.delete-button {
+  background-color: #ac854c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 80%;
+}
+
+.delete-button:hover {
   background-color: #c29f6c;
 }

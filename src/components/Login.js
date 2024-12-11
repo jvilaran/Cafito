@@ -19,7 +19,7 @@ const Login = ({ user, login }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/login/", {
+      const response = await fetch("https://cafito.onrender.com/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const Login = ({ user, login }) => {
               required
             />
           </div>
-          <button type="submit">Confirmar</button>
+          <button type="submit" className="submit_button">Confirmar</button>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </div>

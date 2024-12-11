@@ -10,7 +10,7 @@ const ProductList = () => {
   useEffect(() => {
     // Solicitar los productos desde la API
     axios
-      .get("http://127.0.0.1:8000/api/productos/")
+      .get("https://cafito.onrender.com/api/productos/")
       .then((response) => {
         setProducts(response.data);
       })
@@ -24,7 +24,7 @@ const ProductList = () => {
       window.confirm("¿Estás seguro de que quieres eliminar este producto?")
     ) {
       axios
-        .delete(`http://127.0.0.1:8000/api/productos/${id}/`)
+        .delete(`https://cafito.onrender.com/api/productos/${id}/`)
         .then(() => {
           setProducts(products.filter((product) => product.id !== id));
         })
@@ -47,7 +47,7 @@ const ProductList = () => {
   const saveProduct = () => {
     axios
       .put(
-        `http://127.0.0.1:8000/api/productos/${selectedProduct.id}/`,
+        `https://cafito.onrender.com/api/productos/${selectedProduct.id}/`,
         selectedProduct
       )
       .then((response) => {

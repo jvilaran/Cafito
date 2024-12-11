@@ -13,7 +13,7 @@ const CrearVenta = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/productos/")
+      .get("https://cafito.onrender.com/api/productos/")
       .then((response) => {
         setProductos(response.data);
       })
@@ -74,7 +74,7 @@ const CrearVenta = () => {
     };
 
     axios
-      .post("http://127.0.0.1:8000/ventas/nueva/", ventaData, {
+      .post("https://cafito.onrender.com/ventas/nueva/", ventaData, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -1,3 +1,12 @@
+.home_background {
+  background-image: url("../assets/Background_cafito.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+
 .text {
   display: flex; /* Crea un contenedor flexible */
   flex-direction: column; /* Asegura que los elementos estén en una columna */

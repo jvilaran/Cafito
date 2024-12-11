@@ -15,7 +15,7 @@ const Register = ({ setUser }) => {
     const userData = { username, email, password, role };
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/register/", {
+      const response = await fetch("https://cafito.onrender.com/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
