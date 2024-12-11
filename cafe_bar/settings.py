@@ -70,7 +70,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://cafito-front-55527.web.app/login",  # URL del frontend
+    "https://cafito-front-55527.web.app",  # URL del frontend
 ]
 
 
