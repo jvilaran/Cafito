@@ -101,8 +101,12 @@ WSGI_APPLICATION = 'cafe_bar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cafito_back', 
+        'USER': 'cafito_back_user', 
+        'PASSWORD': 'G5mX6o22FxLQ3t79On2espPwzf1XHNNU', 
+        'HOST': 'dpg-ctch3p3tq21c73fq2acg-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
