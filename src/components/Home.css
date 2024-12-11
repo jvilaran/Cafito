@@ -1,0 +1,13 @@
+.text {
+  display: flex; /* Crea un contenedor flexible */
+  flex-direction: column; /* Asegura que los elementos estén en una columna */
+  align-items: center; /* Alinea los elementos hacia la izquierda */
+  margin-top: 20px; /* Margen superior entre el h2 y los párrafos */
+  color: #634d29;
+}
+
+.text p {
+  margin: 10px 0; /* Margen vertical entre cada párrafo */
+  font-size: 16px; /* Ajusta el tamaño de la fuente para mejorar la legibilidad */
+  line-height: 1.6; /* Mejora el espaciado entre líneas */
+}
