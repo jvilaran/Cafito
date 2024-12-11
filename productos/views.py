@@ -11,6 +11,7 @@ from decimal import Decimal
 
 class CrearUsuarioView(views.APIView):
     def post(self, request):
+        print("Datos recibidos:", request.data)
         serializer = UsuarioSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()  # Guarda el nuevo usuario

@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default = 'asdfsadfasd34556sf')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://cafito.onrender.com']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -69,7 +69,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware'
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://cafito-front-55527.web.app",  # URL del frontend
+]
+
 
 
 ROOT_URLCONF = 'cafe_bar.urls'
