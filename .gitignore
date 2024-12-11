@@ -1,0 +1,14 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+db.sqlite3
+
+# Django
+*.log
+*.pot
+*.pyc
+media/
+staticfiles/
